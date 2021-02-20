@@ -1,0 +1,4 @@
+I am using https://www.programiz.com/python-programming/examples to practice some python.
+
+File naming convention that I'm using is example# where # is the example number from the site.
+The first line on each file will also be the example's name in a comment.
