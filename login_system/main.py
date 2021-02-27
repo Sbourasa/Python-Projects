@@ -4,9 +4,17 @@ client = pymongo.MongoClient("mongodb+srv://admin:jTyveGk8wwGKL8H@cluster0.nkldq
 mydb = client["learning_projects"]
 mycol = mydb["accounts"]
 
+class Account:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.logged_in = False
+
+
 mydict = {}
 
-option = int(input("Press '1' to login. Press '2' to Create new account.:  "))
+print("Press '1' to login. Press '2' to Create new account.")
+option = int(input())
 
 if option == 1:
     username = input("Enter your username: ")
@@ -20,9 +28,21 @@ if option == 1:
                 print("Login Success!")
                 break
             else:
-                print("Invalid Password, try again : ") #TODO make this a loop 3x
-        
-        pass
+                i = 0
+                while i < 3:
+                    #retry_password = "Invalid Password. Try again, retry number", i+1, "of 3: "
+                    retry_password = "Invalid password. Try again: "
+                    pass_retry = input(retry_password)
+                    success = pass_retry == x['password']
+                    i += 1 
+                    if success:
+                        print("Login Success!")
+                        break
+                else:
+                    print("Login failure, reached maximum allowed password attempts.")
+                    break
+
+    #print("Username does not exist in our records. Create a new one.")
 
 else:
     username = input("Enter a username: ")
