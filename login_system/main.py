@@ -24,15 +24,17 @@ if option == 1:
         user_exist = username_check(x['username'], username)
         if user_exist:
             i=0
-            password_match = password_check(x['password'], input("Enter a password: "))
+            password_match = password_check(x['password'], input("Enter your password: "))
             while password_match == None and i < 3:
-                print("Attempt #", i+1, "of 3")
+                print("Password retry attempt #", i+1, "of 3")
                 password_retry = password_check(x['password'], input("Password does not match our records, try again: "))
                 i += 1
                 if password_retry:
                     print("Success")
                     break
-
+                if i == 3:
+                    print("Exceeded maximum password retries.")
+                    break
 else:
     for x in mycol.find({},{"_id": 0, "username": 1}):
         if x['username'] == username:
