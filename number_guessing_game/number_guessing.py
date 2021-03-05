@@ -16,7 +16,8 @@ if difficulty == 2:
     number_of_guesses = 7
 elif difficulty == 3:
     number_of_guesses = 5
-
+    
+print("I've got a number 1 - 100, can you guess it?")
 i = 0
 while i < number_of_guesses:
 
